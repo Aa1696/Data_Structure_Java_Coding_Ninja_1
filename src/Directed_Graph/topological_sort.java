@@ -1,5 +1,6 @@
-package Graph;
+package Directed_Graph;
 import java.util.*;
+
 public class topological_sort {
     //using BFS
     public static int[] topological(int V,ArrayList<ArrayList<Integer>>adj){
@@ -11,6 +12,7 @@ public class topological_sort {
                 indegree[vrtx]++;
             }
         }
+        System.out.println("using bfs"+Arrays.toString(indegree));
         ArrayList<Integer>ans=new ArrayList<>();
         for(int i=0;i<V;i++){
             if(indegree[i]==0){
@@ -71,6 +73,7 @@ public class topological_sort {
         }
         int[]ans=new int[V];
         int indx=0;
+        System.out.println("using dfs"+stck);
         while(!stck.isEmpty()){
             int vrtx=stck.pop();
             ans[indx]=vrtx;
@@ -90,3 +93,11 @@ public class topological_sort {
 
     }
 }
+/*
+5 5
+0 1
+2 1
+2 4
+1 4
+1 3
+ */
