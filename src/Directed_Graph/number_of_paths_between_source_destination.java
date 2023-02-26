@@ -3,17 +3,23 @@ package Directed_Graph;
 import java.util.*;
 
 public class number_of_paths_between_source_destination {
-    public static void printpaths(int V, ArrayList<ArrayList<Integer>>adj,int source,int dest){
+    public static void printpaths(int V, ArrayList<ArrayList<Integer>> adj, int source, int dest){
         //boolean[]visited=new boolean[V];
         //int ans=0;
         boolean[]visited=new boolean[V];
-        ArrayList<Integer>ans=new ArrayList<>();
+        List<Integer>ans=new ArrayList<>();
         ans.add(source);
         dfs(source,dest,adj,ans,visited);
     }
-    public static void dfs(int source, int dest, ArrayList<ArrayList<Integer>>adj, ArrayList<Integer> ans, boolean[]visited){
+    public static void println(List<Integer>ans){
+        for(int i=0;i<ans.size();i++){
+            System.out.print(ans.get(i)+" ");
+        }
+    }
+
+    private static void dfs(int source, int dest, ArrayList<ArrayList<Integer>>adj, List<Integer> ans, boolean[]visited){
         if(source==dest){
-            System.out.println(ans);
+            println(ans);
             return;
         }
         visited[source]=true;
@@ -28,7 +34,7 @@ public class number_of_paths_between_source_destination {
         }
         visited[source]=false;
     }
-    public static int count_path_by_dfs(int V,ArrayList<ArrayList<Integer>>adj,int source,int destination){
+    public static int count_path_by_dfs(ArrayList<ArrayList<Integer>>adj, int source, int destination){
 
         int cnt=dfs(adj,source,destination);
         return cnt;
@@ -80,9 +86,9 @@ public class number_of_paths_between_source_destination {
         }
         int s= sc.nextInt();
         int d=sc.nextInt();
-        //printpaths(V,adj,s,d);
-        System.out.println("count the number of paths between source and destination");
+        printpaths(V,adj,s,d);
+        //System.out.println("count the number of paths between source and destination");
         //System.out.println(count_path_by_dfs(V,adj,s,d));
-        System.out.println(cnt_path_by_bfs(V,adj,s,d));
+        //System.out.println(cnt_path_by_bfs(V,adj,s,d));
     }
 }
